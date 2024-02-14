@@ -1,9 +1,10 @@
-<?php1
-
+<?php
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Categoria;
+
+
 
 class CategoriaController extends Controller
 {
@@ -17,16 +18,12 @@ class CategoriaController extends Controller
         if($request)
         {
             $query=trim($request->get('texto'));
-            $categorias=DB::table('categorias')->where('categoria','LIKE','%'.$query.,'%');
+            $categorias=DB::table('categorias')->where('categoria','LIKE','%'.$query.'%')
             ->where('estado','=','1')
             ->orderBy('id','desc')
             ->paginate(10);
-            return view('categoria.index',["categorias"])
-            //$categria = new Categoria;
-            //$categria
-
+            return view('categorias.index',compact('categorias')); //pasamos el resultado como un array
         }
-        
     }
 
     /**
@@ -36,7 +33,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -47,7 +44,10 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categoria = Categoria::firstOrFail($id);
+        $categoria->title=$request->get('categoria');
+        $categoria->title=$request->get('estado');
+        $categoria->save();
     }
 
     /**
@@ -59,6 +59,11 @@ class CategoriaController extends Controller
     public function show($id)
     {
         //
+    }
+
+    public function ra()
+    {
+        return view('categorias.create');
     }
 
     /**
@@ -79,9 +84,13 @@ class CategoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoriaFormRequest $request, $id)
     {
-        //
+        $categoria = Categoria::firstOrFail($id);
+        $categoria->title=$request->get('categoria');
+        $categoria->title=$request->get('estado');
+        $categoria->save();
+    //   return redirectTo('Hello');
     }
 
     /**

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CategoriaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,10 +17,19 @@ Route::get('/', function () {
    return view('layout');   
 });
 
-Route::get('/categorias', function () {
-   return view('categorias.index',['name'=>'ya despiertate!!']);   
-});
+Route::get('/categorias', CategoriaController::class.'@'.'index')->name('categorias'); 
 
-// Route::get('/', function () {
-//     return view('categorias.index',['name' =>"mi creador está trabajando"]);
-// });
+// Route::get('/categorias/crear', function(){
+//    return view('categorias.create');
+// })->name('categorias.create');
+
+// Route::group(CategoriaController::class)
+//     ->prefix('categorias')
+//     ->as('categorias')
+//     ->group(function () {
+//         Route::get('', 'index')->name('categorias');
+//         Route::get('/crear', 'ra')->name('categorias.create');
+//        // Route::get('/bills/{bill}/invoice/pdf', 'invoice')->name('pdf.invoice');
+//     });
+
+
