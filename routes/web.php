@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/categorias', CategoriaController::class.'@'.'index')->name('categorias'); 
+Route::get('/categorias', CategoriaController::class.'@'.'index')->name('categorias');  
 
 // Route::get('/categorias/crear', function(){
 //    return view('categorias.create');

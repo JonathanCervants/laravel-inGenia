@@ -4,10 +4,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Listado de Categorías</h1>
-            </div>
-            <div class="col-sm-6">
-                Home
+                <h2>Categorías</h2>
             </div>
         </div>
     </div>
@@ -21,33 +18,29 @@
                     <div class="col-xl-12">
                         <form action="{{route('categorias')}}" method="get">
                             <div class="row">
-                                <div class="col-lg-6 col-sm-6 col-xs-12">
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
                                     <div class="input-group mb-6">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#miModal">
-                                            Abrir Modal
-                                        </button>
-                                    
-                                        <div class="modal-fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <!-- Contenido del modal -->
-                                                    @include('categorias.create')
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {{-- <a href="{{route('categorias.create')}}" class="btn btn-success" >Registrar</a> --}}
-                                       
+                                        
+                                                     
                                         <input type="text" class="form-control" name="texto" id="texto" placeholder="Buscar Categoria">
                                         <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
                                     </div>
                                 </div>
-                                <div class="col-log-7 col-sm-6 col-xs-12">
-                                    <div class="input-group mb-6">
-                                        <span class="input-group-text">
-                                      
-                                        </span>
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#miModal">
+                                        Abrir Modal
+                                    </button>
+                                
+                                    <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <!-- Contenido del modal -->
+                                                @include('categorias.create')
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                               
                             </div>
                         </form>
                     </div>
