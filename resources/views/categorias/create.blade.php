@@ -4,12 +4,14 @@
     </div>  
     </div>            
     <div class="modal-body">
-        <form action="{{route('categoria.registro')}}">
+        <form method="post" class="form">
+          @csrf 
             <div class="form-group">
               <label for="email">Categoría</label>
-              <input type="text" class="form-control" id="categoria">
+              <input type="text" class="form-control" name="categoria" id="categoria">
             </div>
             <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
     </div>
     <div class="modal-footer">
         <button type="button" data-dismiss="modal" class="btn btn-danger">Cancelar</button>

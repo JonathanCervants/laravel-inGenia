@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Categoria;
-
+use App\Http\Requests\CategoriaFormRequest;
 
 
 class CategoriaController extends Controller
@@ -14,7 +14,7 @@ class CategoriaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request) 
-    {
+    { 
         if($request)
         {
             $query=trim($request->get('texto'));
@@ -42,12 +42,15 @@ class CategoriaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoriaFormRequest $request)
     {
-        $categoria = Categoria::firstOrFail($id);
-        $categoria->title=$request->get('categoria');
-        $categoria->title=$request->get('estado');
+         
+        $categoria = new Categoria(array(
+            'categoria'=>$request->get('categoria')
+        ));
+            // $categoria->estado=$request->get('estado');
         $categoria->save();
+        // ::firstOrFail($id)
     }
 
     /**
