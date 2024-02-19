@@ -4,10 +4,14 @@
     </div>  
     </div>            
     <div class="modal-body">
+       
         <form method="post" class="form">
           @csrf 
+          @foreach ($errors->all() as $error)
+          <p class="alert alert-danger">{{ $error }}</p>
+          @endforeach
             <div class="form-group">
-              <label for="email">Categoría</label>
+              <label for="categoria">Categoría</label>
               <input type="text" class="form-control" name="categoria" id="categoria">
             </div>
             <button type="submit" class="btn btn-primary">Registrar</button>

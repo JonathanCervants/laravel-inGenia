@@ -45,11 +45,11 @@ class CategoriaController extends Controller
     public function store(CategoriaFormRequest $request)
     {
          
-        $categoria = new Categoria(array(
-            'categoria'=>$request->get('categoria')
-        ));
-            // $categoria->estado=$request->get('estado');
+        $categoria = new Categoria();
+        $categoria->categoria = $request->categoria;        
         $categoria->save();
+        return redirect('/categorias')->with('status', 'Categoria Registrada.');
+
         // ::firstOrFail($id)
     }
 

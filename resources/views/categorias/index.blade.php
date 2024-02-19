@@ -17,6 +17,11 @@
                 <div class="card-header">
                     <div class="col-xl-12">
                         <form action="{{route('categorias')}}" method="get">
+                            @if (session('status'))
+                                <div class="alert alert-success">
+                                    {{ session('status') }}
+                                </div>
+                             @endif
                             <div class="row">
                                 <div class="col-lg-3 col-sm-3 col-xs-12">
                                     <div class="input-group mb-6">     
