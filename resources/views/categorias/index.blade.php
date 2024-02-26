@@ -25,20 +25,32 @@
                             <div class="row">
                                 <div class="col-lg-3 col-sm-3 col-xs-12">
                                     <div class="input-group mb-6">     
-                                        <input type="text" class="form-control" name="texto" id="texto" placeholder="Buscar Categoria">
+                                        <input type="text" class="form-control" name="texto" id="texto" placeholder="Buscar Categoria" maxlength="80">
                                         <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
                                     </div>
                                 </div>
+                                <div class="col-lg-3 col-sm-3 col-xs-12">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#miModal">
+                                        Abrir Modal
+                                    </button>
                                 
+                                    <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <!-- Contenido del modal -->
+                                                @include('categorias.create')
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                
                             </div>
                         </form>
                     </div>
                 </div>
             <div class="card-content">
-                <div class="card-body">
-
-                </div>
+                {{-- <div class="card-body">
+                </div> --}}
                 <div class="table-responsive">
                     <table class="table table-hover mb-0">
                         <thead>
@@ -53,8 +65,8 @@
                             @foreach ($categorias as $cat)
                             <tr>
                                 <td>
-                                    <a href="#" class="btn btn-warning btn-sm"></a>
-                                    <button>VZS</button>
+                                    <a href="{{route('categoria.edit',$categoria->id)}}" class="btn btn-warning btn-sm"></a>
+                                    <button>Editar</button>
                                 </td>
                                 <td>{{$cat->id}}</td>
                                 <td>{{$cat->categoria}}</td>
@@ -69,19 +81,4 @@
         </div>
     </div>
 </section>
-
-<div class="col-lg-3 col-sm-3 col-xs-12">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#miModal">
-        Abrir Modal
-    </button>
-
-    <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <!-- Contenido del modal -->
-                @include('categorias.create')
-            </div>
-        </div>
-    </div>
-</div>
 @endsection

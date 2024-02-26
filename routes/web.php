@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\TicketsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,19 +19,25 @@ Route::get('/', function () {
 });
 
 Route::get('/categorias', CategoriaController::class.'@'.'index')->name('categorias'); 
-Route::post('/categorias', CategoriaController::class.'@'.'store');  
+Route::post('/categorias', CategoriaController::class.'@'.'store');
+Route::get('/categorias/edit',function () {
+   return view('categorias.edit');   
+});
 
-// Route::get('/categorias/crear', function(){
-//    return view('categorias.create');
-// })->name('categorias.create');
+Route::controller(TicketsController::class)->group(function(){
 
-// Route::group(CategoriaController::class)
-//     ->prefix('categorias')
-//     ->as('categorias')
-//     ->group(function () {
-//         Route::get('', 'index')->name('categorias');
-//         Route::get('/crear', 'ra')->name('categorias.create');
-//        // Route::get('/bills/{bill}/invoice/pdf', 'invoice')->name('pdf.invoice');
-//     });
+
+Route::controller(TicketsController::class)->group(function(){
+   Route::get('/tickets','index');
+   Route::get('/ticket/registro','create')->name('ticket.registro');
+   Route::post('/ticket/registro','store')->name('ticket.store');
+
+   Route::get('/ticket/{slug}','show')->name('ticket.show');
+   Route::get('/ticket/edit/{slug}','edit')->name('ticket.edit');
+   Route::post('/ticket/edit/{slug}','update');
+   // Route::post('/tickets/registro','store');
+});
+
+
 
 

@@ -33,7 +33,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-
+        return view('categorias.create');
     }
 
     /**
@@ -43,14 +43,11 @@ class CategoriaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(CategoriaFormRequest $request)
-    {
-         
+    {   
         $categoria = new Categoria();
         $categoria->categoria = $request->categoria;        
         $categoria->save();
-        return redirect('/categorias')->with('status', 'Categoria Registrada.');
-
-        // ::firstOrFail($id)
+        return redirect('categorias')->with('status', 'Categoria Registrada.');    
     }
 
     /**
@@ -77,7 +74,8 @@ class CategoriaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categoria = Categoria::whereId($id);
+        return view('categoria.edit', compact($categoria));
     }
 
     /**
