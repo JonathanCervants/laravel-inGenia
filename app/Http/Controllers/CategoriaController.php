@@ -74,8 +74,8 @@ class CategoriaController extends Controller
      */
     public function edit($id)
     {
-        $categoria = Categoria::whereId($id);
-        return view('categoria.edit', compact($categoria));
+        $categoria = Categoria::whereId($id)->firstOrFail();
+        return view('categorias.edit', compact('categoria'));
     }
 
     /**

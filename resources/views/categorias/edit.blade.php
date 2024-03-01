@@ -1,5 +1,6 @@
 @extends('layout')
 @section('content')
+
 <div class="modal-header">
     <div class="modal-title">
         <h5>Editar Categoria</h5>   
@@ -14,7 +15,7 @@
           @endforeach
             <div class="form-group">
               <label for="categoria">Categoría</label>
-              <input type="text" class="form-control" name="categoria" id="categoria">
+              <input type="text" class="form-control" name="categoria" id="categoria" value="{{$categoria->categoria}}">
             </div>
             <button type="submit" class="btn btn-primary">Registrar</button>
         </form>

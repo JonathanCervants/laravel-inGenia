@@ -31,9 +31,8 @@
                                 </div>
                                 <div class="col-lg-3 col-sm-3 col-xs-12">
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#miModal">
-                                        Abrir Modal
+                                        Registrar
                                     </button>
-                                
                                     <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
@@ -65,7 +64,7 @@
                             @foreach ($categorias as $cat)
                             <tr>
                                 <td>
-                                    <a href="{{route('categoria.edit',$categoria->id)}}" class="btn btn-warning btn-sm"></a>
+                                    <a href="{{route('categoria.edit',$cat->id)}}" class="btn btn-warning btn-sm"></a>
                                     <button>Editar</button>
                                 </td>
                                 <td>{{$cat->id}}</td>
