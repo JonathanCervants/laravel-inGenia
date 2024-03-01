@@ -1,5 +1,5 @@
-@extends('layout')
-@section('content')
+{{-- @extends('layout')
+@section('content') --}}
 
 <div class="modal-header">
     <div class="modal-title">

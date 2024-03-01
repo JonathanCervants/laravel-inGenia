@@ -64,8 +64,19 @@
                             @foreach ($categorias as $cat)
                             <tr>
                                 <td>
-                                    <a href="{{route('categoria.edit',$cat->id)}}" class="btn btn-warning btn-sm"></a>
+                                    <a href="{{route('categoria.edit',$cat->id)}}" class="btn btn-warning btn-sm">test</a>
                                     <button>Editar</button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#miModal">
+                                        Registrar
+                                    </button>
+                                    <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <!-- Contenido del modal -->
+                                                @include('categorias.create')
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
                                 <td>{{$cat->id}}</td>
                                 <td>{{$cat->categoria}}</td>
